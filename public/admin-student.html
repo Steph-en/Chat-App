@@ -158,15 +158,17 @@
               </tr>
             </thead>
             <tbody id="tbody">
+              <% users.forEach(function(user){ %>
+                <tr>
+                  <th scope="row"><%= user.id %></th>
+                  <td><%= user.student_name %></td>
+                  <td><%= user.student_program %></td>
+                  <td><%= user.student_id %></td>
+                  <td><i class="fas fa-edit btnedit"></i></td>
+                  <td><i class="fas fa-trash-alt btndelete"></i></td>
+                </tr>
+              <% }); %>
               <!-- <tr>
-                <th scope="row">1</th>
-                <td>Iniunam Ekemini</td>
-                <td>Information Technology</td>
-                <td>ABS19B00176Y</td>
-                <td><i class="fas fa-edit btnedit"></i></td>
-                <td><i class="fas fa-trash-alt btndelete"></i></td>
-              </tr>
-              <tr>
                 <th scope="row">2</th>
                 <td>Appah Stephen</td>
                 <td>Computer Engineering</td>

@@ -7,10 +7,8 @@ const mysql = require('mysql');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
 const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users');
-// const getInfo = require('./public/js/login');
 
 // getInfo;
-
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -18,20 +16,37 @@ const io = socketio(server);
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Chat Bot
 const botName = 'Chat Bot';
+
+// View Rngine
+app.set('view engine', ejs);
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: false}));
 
 // Database Connection
 const connection = mysql.createConnection({
-  host: '127.0.0.1',
-  // port: '3306',
+  host: 'localhost',
   user: 'root',
   password: '',
-  database: 'SchoolDB'
+  database: 'schoolDB'
 })
 
 connection.connect(function(error){
   if(!!error) console.log(error);
   else console.log('Database Connected!')
+})
+
+// Define path
+app.get('/', (req, res) => {
+  let sql = 'SELECT * FROM student';
+  let query = connection.query(sql, (err, rows) => {
+    if(err) throw err; 
+    res.render('admin-student', {
+      // title: 'CRUD',
+      user: rows
+    });
+  })
 })
 
 // Run when a client connects
