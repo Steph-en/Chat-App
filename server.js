@@ -27,9 +27,10 @@ app.use(bodyparser.urlencoded({ extended: false}));
 // Database Connection
 const connection = mysql.createConnection({
   host: 'localhost',
+  // port: '3307',
   user: 'root',
   password: '',
-  database: 'schoolDB'
+  database: 'SchoolDB'
 })
 
 connection.connect(function(error){
