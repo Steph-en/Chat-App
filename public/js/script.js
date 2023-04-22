@@ -1,6 +1,4 @@
-/**
- * Landing Page
- */
+// Landing Page
 const left = document.querySelector(".btn");
 const right = document.querySelector(".btn1");
 const container = document.querySelector(".container");
