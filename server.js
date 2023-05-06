@@ -4,11 +4,11 @@ const express = require("express");
 const socketio = require("socket.io");
 const formatMessage = require("./utils/messages");
 const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require("./utils/users");
-// const bodyparser = require("body-parser");
+const mysql = require("mysql");
+const bodyparser = require("body-parser");
 // const generateData = require("./public/js/script");
 // const ejs = require("ejs");
 // const fileUpload = require('express-fileupload');
-// const mysql = require("mysql");
 // const fetch = require("node-fetch");
 
 // getInfo;
@@ -73,11 +73,6 @@ io.on("connection", (socket) => {
   });
 });
 
-
-const PORT = 3000 || process.env.PORT;
-
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
 // Database Connection
 // const connection = mysql.createConnection({
 //   host: "localhost",
@@ -91,3 +86,7 @@ server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 //   if (!!error) console.log(error);
 //   else console.log("Database Connected!");
 // });
+
+const PORT = 3000 || process.env.PORT;
+
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
